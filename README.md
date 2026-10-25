@@ -2,8 +2,9 @@
 
 Convert YouTube videos and playlists to MP3.
 
-- **Web UI** — Apple-like Next.js app (deploy on Vercel)
-- **Download API** — FastAPI + `yt-dlp` + `ffmpeg` (deploy on Railway)
+- **Repo:** [github.com/cryptic-exe/tube-to-mp3](https://github.com/cryptic-exe/tube-to-mp3)
+- **Web UI:** [tube-to-mp3-drab.vercel.app](https://tube-to-mp3-drab.vercel.app) (Vercel)
+- **Download API** — FastAPI + `yt-dlp` + `ffmpeg` on Railway (see Deploy below)
 - **CLI** — same conversion engine for local use
 
 > For personal use with content you have rights to. Not affiliated with YouTube. A public downloader can be abused and may violate platform terms — the API key and rate limits are required for any public deploy.
