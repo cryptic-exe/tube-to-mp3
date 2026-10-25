@@ -1,0 +1,16 @@
+[project]
+name = "youtube-mp3"
+version = "0.1.0"
+description = "Shared YouTube → MP3 helpers"
+requires-python = ">=3.11"
+dependencies = [
+  "yt-dlp[default]>=2025.10.14",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["youtube_mp3*"]

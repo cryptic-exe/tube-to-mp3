@@ -1,0 +1,10 @@
+.venv
+**/__pycache__
+**/*.pyc
+.git
+apps/web/node_modules
+apps/web/.next
+downloads
+**/.DS_Store
+**/.env
+**/.env.*

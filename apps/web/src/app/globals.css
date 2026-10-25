@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #f5f5f7;
+  --bg-elevated: rgba(255, 255, 255, 0.72);
+  --bg-solid: #ffffff;
+  --text: #1d1d1f;
+  --text-secondary: #6e6e73;
+  --separator: rgba(0, 0, 0, 0.08);
+  --accent: #0071e3;
+  --accent-pressed: #0077ed;
+  --control-bg: rgba(0, 0, 0, 0.04);
+  --control-bg-active: #ffffff;
+  --danger: #d70015;
+  --success: #248a3d;
+  --shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+  --radius: 18px;
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
+    "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000000;
+    --bg-elevated: rgba(28, 28, 30, 0.72);
+    --bg-solid: #1c1c1e;
+    --text: #f5f5f7;
+    --text-secondary: #a1a1a6;
+    --separator: rgba(255, 255, 255, 0.1);
+    --accent: #0a84ff;
+    --accent-pressed: #409cff;
+    --control-bg: rgba(255, 255, 255, 0.08);
+    --control-bg-active: rgba(255, 255, 255, 0.14);
+    --danger: #ff453a;
+    --success: #30d158;
+    --shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  background:
+    radial-gradient(1200px 600px at 50% -10%, rgba(0, 113, 227, 0.08), transparent 60%),
+    var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background:
+      radial-gradient(1000px 500px at 50% -15%, rgba(10, 132, 255, 0.12), transparent 55%),
+      var(--bg);
+  }
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
