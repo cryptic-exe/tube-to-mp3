@@ -63,33 +63,36 @@ python download_mp3.py "https://www.youtube.com/watch?v=VIDEO_ID" -q 192
 
 This repo is intended to be **public**. Push to GitHub, then connect Vercel and Railway to the same repository.
 
-### Railway (API)
+### Railway (API) — required for downloads to work
 
-1. New project → Deploy from GitHub → select this repo.
-2. Set the Dockerfile path to `services/api/Dockerfile` (repo root as build context). A `railway.toml` is included.
-3. Variables:
+The Vercel UI is live, but conversions need this worker. Railway CLI login is interactive; use the dashboard:
 
-| Variable | Example |
-|----------|---------|
-| `DOWNLOAD_API_KEY` | long random secret |
-| `ALLOWED_ORIGINS` | `https://your-app.vercel.app` |
+1. Open [railway.app/new](https://railway.app/new) → **Deploy from GitHub** → `cryptic-exe/tube-to-mp3`.
+2. Confirm build uses repo-root Dockerfile (`services/api/Dockerfile` / `railway.toml` is already in the repo).
+3. Variables → add:
+
+| Variable | Value |
+|----------|--------|
+| `DOWNLOAD_API_KEY` | same value as Vercel `DOWNLOAD_API_KEY` (see `apps/web/.env.local` locally) |
+| `ALLOWED_ORIGINS` | `https://tube-to-mp3-drab.vercel.app` |
 | `MAX_PLAYLIST_ENTRIES` | `50` |
 | `RATE_LIMIT_PER_MINUTE` | `10` |
 
-4. Generate a public HTTPS domain. Health check: `GET /health`.
+4. Settings → Networking → **Generate domain**. Copy the `https://….up.railway.app` URL.
+5. Health check: `curl https://YOUR-RAILWAY-URL/health` → `{"status":"ok"}`.
 
-### Vercel (web)
+### Vercel (web) — already deployed
 
-1. Import the GitHub repo in Vercel.
-2. Set **Root Directory** to `apps/web`.
-3. Environment variables (Production + Preview):
+Live at [tube-to-mp3-drab.vercel.app](https://tube-to-mp3-drab.vercel.app). Project root is `apps/web`.
+
+After Railway is up, update Vercel env **Production + Preview**:
 
 | Variable | Value |
 |----------|--------|
 | `DOWNLOAD_API_URL` | Railway public URL (no trailing slash) |
 | `DOWNLOAD_API_KEY` | same secret as Railway |
 
-4. Deploy. The browser only talks to Next.js `/api/*` routes; the key never ships to the client.
+Redeploy the web app (Deployments → Redeploy) so the BFF picks up the real API URL. The browser only talks to Next.js `/api/*`; the key never ships to the client.
 
 ## API (backend)
 
